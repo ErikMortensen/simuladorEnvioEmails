@@ -60,13 +60,18 @@ function validarFormulario(e){
             mostrarError('El email no es valido.');
         }
     }
+
+    if( er.test(email.value)  &&  asunto.value !== ''  &&  mensaje.value !== '' ){
+        btnEnviar.disabled = false;
+        btnEnviar.classList.remove( 'cursor-not-allowed', 'opacity-50' );
+    }
 }
 
 function mostrarError(mensaje){
     const mensajeError = document.createElement('p');
 
     mensajeError.textContent = mensaje;
-    mensajeError.classList.add('border', 'border-red-500', 'background-red-100', 'text-red-500', 'p-3', 'mt-5', 'error');
+    mensajeError.classList.add('border', 'border-red-500', 'background-red-100', 'text-red-500', 'p-3', 'mt-5', 'text-center','error');
 
     const errores = document.querySelectorAll('.error');
     if(errores.length === 0){
